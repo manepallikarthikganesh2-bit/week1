@@ -1,0 +1,122 @@
+void main() {
+print("=== Welcome to Dart Language Basics ===\n");
+int age = 25;
+double height = 5.9;
+String name = "Alice";
+bool isStudent = true;
+print("Name: $name, Age: $age, Height: $height, Student: $isStudent\n");
+final currentYear = DateTime.now().year;
+const pi = 3.1415;
+print("Current Year: $currentYear");
+print("Value of Pi (const): $pi\n");
+if (age > 18) {
+print("$name is an adult.");
+} else {
+print("$name is a minor.");
+}
+print("\n--- For Loop ---");
+for (int i = 1; i <= 5; i++) {
+print("Count: $i");
+}
+print("\n--- While Loop ---");
+int x = 1;
+while (x <= 3) {
+print("While loop x = $x");
+x++;
+}
+print("\n--- Do-While Loop ---");
+int y = 1;
+do {
+print("Do-while y = $y");
+y++;
+} while (y <= 2);
+print("\n--- Functions ---");
+int sum = add(10, 20);
+print("Sum of 10 and 20 is: $sum");
+print("\n--- Optional & Named Parameters ---");
+greetUser("Bob");
+greetUser("Charlie", age: 30);
+print("\n--- List & Set ---");
+List<String> fruits = ["Apple", "Banana", "Mango"];
+fruits.add("Orange");
+print("Fruits: $fruits");
+Set<int> numbers = {1, 2, 2, 3};
+print("Unique numbers (Set): $numbers");
+print("\n--- Map ---");
+Map<String, dynamic> student = {
+'name': "Alice",
+'age': 25,
+'grade': "A"
+};
+print("Student Info: $student");
+print("Student Name: ${student['name']}");
+print("\n--- Null Safety ---");
+String? nullableStr;
+nullableStr = "Now assigned!";
+print("Nullable String: $nullableStr");
+print("\n--- Classes & Objects ---");
+Person person = Person("David", 22);
+person.sayHello();
+print("\n--- Inheritance ---");
+Student studentObj =
+Student("Emily", 20, "Computer Science");
+studentObj.sayHello();
+print("\n--- Enums ---");
+print("Day today is: ${Day.Monday}");
+checkDay(Day.Sunday);
+print("\n--- Exception Handling ---");
+try {
+int result = divide(10, 0);
+print("Division Result: $result");
+} catch (e) {
+print("Caught an exception: $e");
+} finally {
+print("Finally block executed.");
+}
+}
+int add(int a, int b) {
+return a + b;
+}
+void greetUser(String name, {int age = 18}) {
+print("Hello $name, Age: $age");
+}
+class Person {
+String name;
+int age;
+Person(this.name, this.age);
+void sayHello() {
+print("Hi, I'm $name and I'm $age years old.");
+}
+}
+class Student extends Person {
+String major;
+Student(String name, int age, this.major)
+: super(name, age);
+@override
+void sayHello() {
+super.sayHello();
+print("I'm studying $major.");
+}
+}
+enum Day {
+Monday,
+Tuesday,
+Wednesday,
+Thursday,
+Friday,
+Saturday,
+Sunday
+}
+void checkDay(Day day) {
+if (day == Day.Sunday) {
+print("It's a holiday!");
+} else {
+print("It's a working day.");
+}
+}
+int divide(int a, int b) {
+if (b == 0) {
+throw Exception("Cannot divide by zero!");
+}
+return a ~/ b;
+}
